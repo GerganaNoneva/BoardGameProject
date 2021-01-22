@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+
+@keyframes blinker {
+  80% {
+    opacity: 0;
+    filter: blur(1px) contrast(150%);
+  }
+}
+
+@keyframes blinkerText {
+  70% {
+    opacity: 70%;
+    filter: blur(0.3px) contrast(150%) brightness(80%);
+    text-shadow: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0.3px 0.3px 0px, rgb(0, 0, 0) 0.5px 0px 0px;
+  }
+}
+
+@keyframes blinkerInfo {
+  100% {
+    opacity: 1;
+    filter: blur(0.3px)  brightness(110%);
+  }
+}
+
+/* Body style*/
+body {
+  background-image: url("images/font.jpg");
+  font-family: 'Nerko One', cursive;
+  align-items: center;
+}
+
+/* -- Title Style -- */
+.title {
+  border: solid 3px black;
+  border-radius: 30px 30px 30px 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 5%;
+  background: linear-gradient(90deg, rgb(255, 84, 84), rgb(245, 237, 98), rgb(95, 214, 103), rgb(115, 222, 252));
+  text-align: center;
+}
+
+/* -- Info message Box -- */
+.info {
+  display: none;
+  flex-direction: row;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 100%;
+}
+
+.playerInfo {
+  border: solid 2px black;
+  border-radius: 20px 20px 20px 20px;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  filter: contrast(90%) blur(0.2px);
+  background-color: rgb(154, 186, 205);
+  text-shadow: rgb(0, 0, 0) 3px 0px 0px, rgb(0, 0, 0) 2.83487px 0.981584px 0px, rgb(0, 0, 0) 2.35766px 1.85511px 0px, rgb(0, 0, 0) 1.62091px 2.52441px 0px, rgb(0, 0, 0) 0.705713px 2.91581px 0px, rgb(0, 0, 0) -0.287171px 2.98622px 0px, rgb(0, 0, 0) -1.24844px 2.72789px 0px, rgb(0, 0, 0) -2.07227px 2.16926px 0px, rgb(0, 0, 0) -2.66798px 1.37182px 0px, rgb(0, 0, 0) -2.96998px 0.42336px 0px, rgb(0, 0, 0) -2.94502px -0.571704px 0px, rgb(0, 0, 0) -2.59586px -1.50383px 0px, rgb(0, 0, 0) -1.96093px -2.27041px 0px, rgb(0, 0, 0) -1.11013px -2.78704px 0px, rgb(0, 0, 0) -0.137119px -2.99686px 0px, rgb(0, 0, 0) 0.850987px -2.87677px 0px, rgb(0, 0, 0) 1.74541px -2.43999px 0px, rgb(0, 0, 0) 2.44769px -1.73459px 0px, rgb(0, 0, 0) 2.88051px -0.838247px 0px;
+}
+
+.resultInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 5%;
+  justify-content: center;
+}
+
+.pawnImageInfo {
+  width: 10%;
+  padding-right: 5%;
+}
+/* -- End of Info message Box -- */
+
+
+/* -- Board Style -- */
+.board {
+  width: 80%;
+  margin-left: 10%;
+  display: none;
+  flex-direction: row;
+}
+
+.column {
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.field {
+  border: solid 2px black;
+  height: 25%;
+  filter: blur(0.5px) contrast(90%);
+  pointer-events: none;
+  cursor: none;
+}
+
+.lastField {
+  border: none;
+}
+
+.fieldImg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* -- Start Button Section style -- */
+.start-button-section {
+  width: 20%;
+  margin-left: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.start-button {
+  cursor: pointer;
+  width: 200%;
+  border: solid 2px black;
+  border-radius: 20px 20px 20px 20px;
+  background: linear-gradient(90deg, darkgrey, grey, lightgrey, grey, darkgrey);
+  font-size: 300%;
+  font-family: 'Nerko One', cursive;
+}
+
+.start-button:hover {
+  filter: brightness(120%);
+}
+
+.start-button:active {
+  transform: translate(0, 0.5rem);
+  box-shadow: 0 0.5rem rgba(179, 240, 250, 0.65);
+}
+
+.start-pic {
+  width: 150%;
+  margin-top: 20%;
+}
+/* -- End of Start Button Section -- */
+
+/*Rulles message box*/
+.rulles-message {
+  margin: auto 10%;
+  display: none;
+  flex-direction: column;
+  border: solid 5px black;
+  border-radius: 30px 30px 30px 30px;
+  padding: 10px 10px 10px 10px;
+  font-size: 30px;
+  background: linear-gradient(90deg, rgb(98, 137, 161), white, rgb(98, 137, 161));
+  align-items: center;
+}
+
+.selectPlayers {
+  cursor: pointer;
+  margin: auto;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Nerko One', cursive;
+  font-size: 60%;
+  text-align: center;
+  color: rgb(20, 19, 19);
+  background: rgb(227, 227, 227);
+  padding: 0.3rem;
+  border: black;
+}
+/* -- End of Rulles message box --*/
+
+/* -- OK BUTTON style -- */
+.ok-button {
+  cursor: pointer;
+  border: solid 2px black;
+  border-radius: 20px 20px 20px 20px;
+  margin: auto auto 10px auto;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(90deg, black, darkgrey, white, darkgrey, black);
+  color: black;
+  width: 50%;
+  font-size: 100%;
+  font-family: 'Nerko One', cursive;
+}
+.ok-button:hover {
+  filter: brightness(160%);
+}
+.ok-button:active {
+  transform: translate(0, 0.2rem);
+  box-shadow: 0 0.1em rgba(58, 53, 53, 0.65);
+}
+
+/* -- Dice Container Style  -- */
+.dice-container {
+  display: none;
+  flex-direction: column;
+  z-index: 3;
+  text-align: center;
+  border: solid 5px black;
+  border-radius: 30px 30px 30px 30px;
+  position: absolute;
+  margin-left: 25%;
+  width: 50%;
+  align-items: center;
+  background: linear-gradient(90deg, rgb(98, 137, 161), white, rgb(98, 137, 161));
+}
+
+.infoLabel {
+  width: 100%;
+  height: 10%;
+  font-weight: bold;
+}
+
+.infoText1 {
+  animation: blinkerText 2s linear infinite;
+  text-emphasis: italic;
+  filter: contrast(150%) brightness(80%);
+}
+.infoText2 {
+  animation: blinkerText 2s linear infinite;
+  width: 100%;
+  height: 10%;
+  text-emphasis: italic;
+}
+
+.dice {
+  width: 30%;
+  cursor: pointer;
+}
+/* -- End of Dice Section -- */
+
+/* -- Pawns -- */
+.pawn {
+  position: absolute;
+  display: none;
+  width: 2%;
+  z-index: 2;
+}
+
+/* -- Pawns Container -- */
+.pawn1 {
+  margin-top:0%;
+  margin-left: 10.5%;
+}
+
+.pawn2 {
+  margin-top: 0%;
+  margin-left: 13%;
+}
+
+.pawn3 {
+  margin-top: 3%;
+  margin-left: 11%;
+}
+
+.pawn4 {
+  margin-top: 3%;
+  margin-left: 14%;
+}
+
+/* -- Game Containers Style -- */
+.game-container {
+  z-index: 5;
+  display: none;
+  border: solid 3px black;
+  border-radius: 30px 30px 30px 30px;
+  position: absolute;
+  width: 50%;
+  height: 70%;
+  margin-left: 25%;
+  flex-direction: column;
+  filter: brightness(100%);
+  text-align: center;
+}
+.game-container-1 {
+  background:linear-gradient(90deg, rgb(245, 169, 169), rgb(241, 209, 209),rgb(245, 169, 169));
+}
+.game-container-2 {
+  background:linear-gradient(90deg, rgb(184, 246, 188),rgb(185, 216, 186),rgb(184, 246, 188));
+}
+.game-container-3 {
+  background:linear-gradient(90deg, rgb(248, 244, 162), rgb(209, 207, 174),rgb(248, 244, 162));
+}
+.game-container-4{
+  background:linear-gradient(90deg, rgb(179, 225, 238), rgb(204, 233, 241),rgb(179, 225, 238));
+}
+
+.gameLabel {
+  font-size: 200%;
+  width: 100%;
+}
+
+/* Final Alert Message container*/
+.alert-container {
+  display: none;
+  flex-direction: column;
+  z-index: 3;
+  text-align: center;
+  border: solid 5px black;
+  border-radius: 30px 30px 30px 30px;
+  position: absolute;
+  margin-left: 25%;
+  width: 50%;
+  align-items: center;
+  background: linear-gradient(90deg, rgb(98, 137, 161), white, rgb(98, 137, 161));
+  text-shadow: rgb(0, 0, 0) 3px 0px 0px, rgb(0, 0, 0) 2.83487px 0.981584px 0px, rgb(0, 0, 0) 2.35766px 1.85511px 0px, rgb(0, 0, 0) 1.62091px 2.52441px 0px, rgb(0, 0, 0) 0.705713px 2.91581px 0px, rgb(0, 0, 0) -0.287171px 2.98622px 0px, rgb(0, 0, 0) -1.24844px 2.72789px 0px, rgb(0, 0, 0) -2.07227px 2.16926px 0px, rgb(0, 0, 0) -2.66798px 1.37182px 0px, rgb(0, 0, 0) -2.96998px 0.42336px 0px, rgb(0, 0, 0) -2.94502px -0.571704px 0px, rgb(0, 0, 0) -2.59586px -1.50383px 0px, rgb(0, 0, 0) -1.96093px -2.27041px 0px, rgb(0, 0, 0) -1.11013px -2.78704px 0px, rgb(0, 0, 0) -0.137119px -2.99686px 0px, rgb(0, 0, 0) 0.850987px -2.87677px 0px, rgb(0, 0, 0) 1.74541px -2.43999px 0px, rgb(0, 0, 0) 2.44769px -1.73459px 0px, rgb(0, 0, 0) 2.88051px -0.838247px 0px;
+}
+
+.finalMessage {
+  width: 100%;
+  font-size: 200%;
+  font-weight: bold;
+}
+.pawnFinalImg {
+  width: 15%;
+}
+/* -- Final Alert Message -- */
+
+/* End Game Message container*/
+.end-game-container {
+  display: none;
+  flex-direction: column;
+  z-index: 3;
+  text-align: center;
+  border: solid 5px black;
+  border-radius: 30px 30px 30px 30px;
+  position: absolute;
+  margin-left: 25%;
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  background: linear-gradient(90deg, rgb(98, 137, 161), white, rgb(98, 137, 161));
+}
+.endGameMessage {
+  width: 100%;
+  height: 10%;
+  font-weight: bold;
+  font-size: 200%;
+}
+/* -- Final Alert Message -- */

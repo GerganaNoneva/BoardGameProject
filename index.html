@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast && Curious</title>
+    <link rel="icon" type="image/png" href="/images/brain.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="onLoad()">
+    <script src="script.js"></script>
+
+    <!-- Title section -->
+    <div class="title">
+        <p>FAST && CURIOUS </p>
+    </div>
+    <!-- End of Title section-->
+
+    <!-- ***** Games Sections *****  -->
+    <!-- Game One Container -->
+    <div class="game-container game-container-1" id="game1">
+        <output id="gameLabel1" class="gameLabel" value=""></output>
+        <p>Some game is playing...</p>
+        <label>RESULT</label>
+        <output class="result-game" id="result-game1"></output>
+        <button class="ok-button" id="ok-button-game1" onclick="closeGame(this)">GET RESULT</button>
+    </div>
+    <!-- End of Game One Container -->
+
+    <!-- Game Two Container -->
+    <div class="game-container game-container-2" id="game2">
+        <output id="gameLabel2" class="gameLabel" value=""></output>
+        <p>Some game is playing...</p>
+        <label>RESULT</label>
+        <output class="result-game" id="result-game2"></output>
+        <button class="ok-button" id="ok-button-game2" onclick="closeGame(this)">GET RESULT</button>
+    </div>
+    <!-- End of Game Two Container -->
+
+    <!-- Game Three Container -->
+    <div class="game-container game-container-3" id="game3">
+        <output id="gameLabel3" class="gameLabel"></output>
+        <p>Some game is playing...</p>
+        <label>RESULT</label>
+        <output class="result-game" id="result-game3"></output>
+        <button class="ok-button" id="ok-button-game3" onclick="closeGame(this)">GET RESULT</button>
+    </div>
+    <!-- End of Game Three Container -->
+
+    <!-- Game Four Container -->
+    <div class="game-container game-container-4" id="game4">
+        <output id="gameLabel4" class="gameLabel"></output>
+        <p>Some game is playing...</p>
+        <label>RESULT</label>
+        <output class="result-game" id="result-game4"></output>
+        <button class="ok-button" id="ok-button-game4" onclick="closeGame(this)">GET RESULT</button>
+    </div>
+    <!-- End of Game Four Container -->
+    <!-- ***** Games Sections *****  -->
+
+    <!-- *** --- INFO SECTION --- *** -->
+    <div class="info" id="info">
+        <div class="playerInfo" id="infoPl-1">
+            <img class="pawnImageInfo" src="/images/pawn1.png">
+            <div class="resultInfo">
+                <label>Player One </label>
+                <output class="result" id="resultPl-1"></output>
+            </div>
+        </div>
+        <div class="playerInfo" id="infoPl-2">
+            <img class="pawnImageInfo" src="/images/pawn2.png">
+            <div class="resultInfo">
+                <label>Player Two </label>
+                <output class="result" id="resultPl-2"></output>
+            </div>
+        </div>
+        <div class="playerInfo" id="infoPl-3">
+            <img class="pawnImageInfo" src="/images/pawn3.png">
+            <div class="resultInfo">
+                <label>Player Three </label>
+                <output class="result" id="resultPl-3"></output>
+            </div>
+        </div>
+        <div class="playerInfo" id="infoPl-4">
+            <img class="pawnImageInfo" src="/images/pawn4.png">
+            <div class="resultInfo">
+                <label>Player Four </label>
+                <output class="result" id="resultPl-4"></output>
+            </div>
+        </div>
+    </div>
+    <!-- *** --- INFO SECTION --- *** -->
+
+    <!-- ***--- DICE CONTAINER --- *** -->
+    <div class="dice-container" id="dice-container">
+        <output id="infoLabel" class="infoLabel" value=""></output>
+        <output id="infoText1" class="infoText1" value=""></output>
+        <img src="/images/dices.png" class="dice" id="dice" onclick="rollDice()">
+        <output id="infoText2" class="infoText2" value=""></output>
+        <button class="ok-button" id="ok-rolls-button" onclick="blinkingMove()">OK</button>
+    </div>
+    <!-- ***--- END OF DICE CONTAINER --- *** -->
+
+    <!-- *** --- FINISH ALERT MESSAGE --- *** -->
+    <div class="alert-container" id="alert-container">
+        <img class="pawnFinalImg" id="pawnFinalImg" src="">
+        <output id="finalMessage" class="finalMessage" value=""></output>
+        <button class="ok-button" onclick="closeAlert()">OK</button>
+    </div>
+    <!-- *** --- END OF FINISH ALERT MESSAGE --- *** -->
+
+    <!-- *** --- GAME OVER MESSAGE CONTAINER --- *** -->
+    <div class="end-game-container" id="end-game-container">
+        <br>
+        <output id="endGameMessage" class="endGameMessage" value=""></output>
+        <button class="ok-button" onclick="window.location.href='index.html'">PLAY AGAIN</button>
+    </div>
+    <!-- *** --- GAME OVER MESSAGE CONTAINER --- *** -->
+
+    <!-- *** --- PAWNS --- *** -->
+    <img class="pawn pawn1" id="pawn1" src="/images/pawn1.png">
+    <img class="pawn pawn2" id="pawn2" src="/images/pawn2.png">
+    <img class="pawn pawn3" id="pawn3" src="/images/pawn3.png">
+    <img class="pawn pawn4" id="pawn4" src="/images/pawn4.png">
+    <!-- *** --- END OF PAWNS --- *** -->
+
+    <!-- *** --- BOARD SECTION --- ***  -->
+    <div class="board" id="board">
+        <!-- BOARD -->
+        <div class="column">
+            <div class="field lastField">
+                <img class="fieldImg" id="field0" src="/images/start.png">
+            </div>
+            <div class="field" id="div-field1">
+                <img class="fieldImg" id="field1" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field2">
+                <img class="fieldImg" id="field2" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field3">
+                <img class="fieldImg" id="field3" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field7">
+                <img class="fieldImg" id="field7" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field6">
+                <img class="fieldImg" id="field6" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field5">
+                <img class="fieldImg" id="field5" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field4">
+                <img class="fieldImg" id="field4" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field8">
+                <img class="fieldImg" id="field8" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field9">
+                <img class="fieldImg" id="field9" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field10">
+                <img class="fieldImg" id="field10" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field11">
+                <img class="fieldImg" id="field11" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field15">
+                <img class="fieldImg" id="field15" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field14">
+                <img class="fieldImg" id="field14" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field13">
+                <img class="fieldImg" id="field13" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field12">
+                <img class="fieldImg" id="field12" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field16">
+                <img class="fieldImg" id="field16" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field17">
+                <img class="fieldImg" id="field17" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field18">
+                <img class="fieldImg" id="field18" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field19">
+                <img class="fieldImg" id="field19" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field23">
+                <img class="fieldImg" id="field23" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field22">
+                <img class="fieldImg" id="field22" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field12">
+                <img class="fieldImg" id="field21" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field20">
+                <img class="fieldImg" id="field20" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field24">
+                <img class="fieldImg" id="field24" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field25">
+                <img class="fieldImg" id="field25" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field26">
+                <img class="fieldImg" id="field26" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field27">
+                <img class="fieldImg" id="field27" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field31">
+                <img class="fieldImg" id="field31" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field30">
+                <img class="fieldImg" id="field30" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field29">
+                <img class="fieldImg" id="field29" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field28">
+                <img class="fieldImg" id="field28" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field32">
+                <img class="fieldImg" id="field32" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field33">
+                <img class="fieldImg" id="field33" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field34">
+                <img class="fieldImg" id="field34" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field35">
+                <img class="fieldImg" id="field35" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field39">
+                <img class="fieldImg" id="field39" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field38">
+                <img class="fieldImg" id="field38" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field37">
+                <img class="fieldImg" id="field37" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field36">
+                <img class="fieldImg" id="field36" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field" id="div-field40">
+                <img class="fieldImg" id="field40" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field41">
+                <img class="fieldImg" id="field41" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field42">
+                <img class="fieldImg" id="field42" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field43">
+                <img class="fieldImg" id="field43" onclick="movePawn(this)">
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="field lastField" id="div-field47">
+                <img class="fieldImg" id="field47" src="images/finish.png" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field46">
+                <img class="fieldImg" id="field46" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field45">
+                <img class="fieldImg" id="field45" onclick="movePawn(this)">
+            </div>
+            <div class="field" id="div-field44">
+                <img class="fieldImg" id="field44" onclick="movePawn(this)">
+            </div>
+        </div>
+        <!-- End of BOARD-->
+    </div>
+    <!-- *** --- END OF BOARD SECTION --- *** -->
+
+    <!-- Start Section - Start Button and Brain image -->
+    <div id="start-button-section" class="start-button-section">
+        <button class="start-button" id="start-button" onclick="start()">START</button>
+        <img class="start-pic" id="start-pic" src="/images/brain.png">
+    </div>
+    <!-- End of start section -->
+
+    <!-- *** --- GAME RULLES MESSAGE BOX --- *** -->
+    <div class="rulles-message" id="rulles-message">
+        <label class="rulles-label">GAME RULLES </label>
+        <p style="font-size: small"> Some rulles.... some text...some text...some text...some text...some text...some
+            text...some
+            text...some text...some text...some text...some text...some text...some text...some text...some
+            text...some
+            text...some text...some text...some text...</p>
+        <section class="numOfPlayers">
+            <span class="numOfPlayers">Choose number of players: </span>
+            <select id="selectPlayers" class="selectPlayers">
+                <option>Please select</option>
+            </select>
+        </section>
+        <!-- Rulles OK Button-->
+        <button class="ok-button" id="ok-rulles-button" onclick="okRulllesButton()">OK</button>
+    </div>
+    <!-- *** --- END OF GAME RULLES MESSAGE BOX --- *** -->
+</body>
+
+</html>
